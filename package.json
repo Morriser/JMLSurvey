@@ -1,0 +1,19 @@
+{
+  "name": "JMLSurvey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "morriser",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.3",
+    "path": "^0.12.7",
+    "pug": "^2.0.4"
+  }
+}

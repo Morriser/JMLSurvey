@@ -1,0 +1,55 @@
+body {
+    background-color: #a8c0b7;
+    background-image: url("/images/background_image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Lato", sans-serif;
+}
+.maincontainer {
+    border-top: 8px solid #ff642b;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    margin: 5% 15% 5% 15%;
+    padding: 5%;
+    background: white;
+}
+.header {
+    text-align: center;
+    background: white;
+}
+
+/* FORM COMPONENTS */
+input[type=text] {
+    width: 100%;
+    height: 20px;
+    padding: 20px 15px;
+    border: grey solid 1px;
+    border-radius: 5px;
+    box-shadow: 3px 3px lightgrey;
+}
+input[type=text]:focus {
+    outline-width: 0;
+}
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 20px 15px;
+    border: grey solid 1px;
+    border-radius: 5px;
+    box-shadow: 3px 3px lightgrey;
+}
+textarea:focus {
+    outline-width: 0;
+}
+.btnSubmit {
+    width: 100px;
+    margin: 3%;
+    text-align: center;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.77);
+}
+
+@media only screen and (max-width: 700px) {
+    .maincontainer {
+        margin: 0;
+    }
+}

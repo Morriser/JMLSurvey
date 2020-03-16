@@ -1,0 +1,49 @@
+html
+  head
+    title Kontakta skyddsombud
+  body
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale = 1.0')
+  link(rel='stylesheet' href='css/index.css')
+  link(rel='icon' href='images/favicon.ico')
+
+.maincontainer
+  .header
+    h1 Kontakta skyddsombud
+  br
+
+  p Hej! Jag heter Frida och är studiesocial ledamot och skyddsombud på Fysiksektionen. Det innebär bland annat att jag är ansvarig för att se till att alla studenter på sektionen känner sig trygga och mår bra, både fysiskt och psykiskt. Det medför även att jag har tystnadsplikt enligt lag.
+  p Här kan du berätta om allt ifrån en kränkande behandling du blivit utsatt för (både på och utanför KTH) till ett dåligt uppförande av en föreläsare eller problem med psykiska ohälsa. Om du tex blivit utsatt för trakasserier kan jag hjälpa dig att gå vidare med en anmälan till KTH men då går det tyvärr inte att vara anonym. Vill du däremot bara ha ett svar går det bra.
+  p Sist men inte minst vill jag bara säga att det alltid går bra att rycka tag i mig om du ser mig på (eller utanför) campus!
+
+  br
+  br
+
+  form(action='/' method='POST')
+    h4 Ditt namn (frivilligt):
+    input(type='text' name='name' maxlength='50')
+    
+    h4 Om du vill att jag kontaktar dig, hur vill du bli kontaktad?
+    input#rad(type='radio' name ="contactmethod" value='0' checked)
+    | Vill inte bli kontaktad
+    input#rad(type='radio' name ="contactmethod" value='1')
+    | Mejl
+    input#rad(type='radio' name ="contactmethod" value='2')
+    | Telefon
+    input#rad(type='radio' name ="contactmethod" value='3')
+    | Personligen
+    //- input#rad(type='radio' name ="contactmethod" value='3')
+    //- | Helt anonym via chatt
+
+    h4 Om du vill bli kontaktad via telefon eller mejl, vad har du för telefonnummer/mejladress?
+    input(type='text' name="contactinfo" maxlength='50')
+
+    h4 Vad vill du prata om?
+    textarea(type='textarea' name='message' maxlength='5000' required)
+
+
+    input.btnSubmit(type='submit' value="Skicka")
+
+  if inputErr
+    errmsg
+      p #{inputErrMsg}

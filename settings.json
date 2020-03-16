@@ -1,0 +1,25 @@
+{
+    "session": {
+        "name": "case",
+        "secret": "q0ErY3ba00YH0N7eflHOumxT+XE="
+    },
+    "mysql": {
+        "host": "localhost",
+        "user": "",
+        "password": "",
+        "database": ""
+    },
+    "mail": {
+        "sender": "noreply@fysiksektionen.se",
+        "reciever": "morris.eriksson@gmail.com",
+        "subject": "Kontakta skyddsombud",
+        "config": {
+            "host": "localhost",
+            "port": 25,
+            "secure": false,
+            "tls":{
+                "rejectUnauthorized": false
+            }
+        }
+    }
+}
