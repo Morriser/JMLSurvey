@@ -9,14 +9,14 @@ const nodemailer    = require('nodemailer');
 
 const app = express();
 
-app.use(express.urlencoded());      // Parse URL-encoded bodies as sent by HTML forms.
+app.use(express.urlencoded({extended: false}));      // Parse URL-encoded bodies as sent by HTML forms.
 app.use(express.json())             // Parse JSON bodies as sent by API clients.
 app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, '/public')));
 app.use(session({
     name:           settings.session.name,
-	secret:         settings.session.secret,
-	resave:         true,
+    secret:         settings.session.secret,
+    resave:         true,
     saveUninitialized: true,
     cookie: {   
         maxAge: 3600000
@@ -27,21 +27,24 @@ app.use(session({
                 Mail
 ##########################################*/
 
-const transporter = nodemailer.createTransport(settings.mail); 
+const transporter = nodemailer.createTransport(settings.mail.config); 
 
 function sendMail(content) {
+    let date = new Date().toISOString().
+ 		replace(/T/, ' ').
+  		replace(/\..+/, '');
     let message = {
-        from:       settings.mail.sender,
-        to:         settings.mail.receiver,
-        subject:    settings.mail.subject,
-        text:       content
+        from: settings.mail.sender,
+        to: settings.mail.receiver,
+        subject: settings.mail.subject + " " + date,
+        text: content
     };
 
     transporter.sendMail(message, (error, info) => {
         if (error) {
             return console.log(error);
         }
-    });        
+    });
 }
 
 /*##########################################
@@ -83,34 +86,34 @@ app.post('/', function(req, res) {
     let contactMethod   = req.body.contactmethod;
     let contactInfo     = req.body.contactinfo;
     let message         = req.body.message;
-
+    let mailcontent	= "";
+    
     switch(contactMethod) 
     {
         case '0':
-            let mailcontent = "Inskickat av " + name + " som inte vill bli"
+            mailcontent = "Inskickat av " + name + " som inte vill bli"
                               + "kontaktad.\n\n\n" + message;
-            sendMail(message);
             break;
         case '1':
-            let mailcontent = "Inskickat av " + name + " som vill bli kontaktad "
+            mailcontent = "Inskickat av " + name + " som vill bli kontaktad "
                               + "via mejl på adressen " + contactInfo + ".\n\n\n" + message;
-            sendMail(message);
             break;
         case '2':
-            let mailcontent = "Inskickat av " + name + " som vill bli kontaktad "
+            mailcontent = "Inskickat av " + name + " som vill bli kontaktad "
                               + "via telefon på numret " + contactInfo + ".\n\n\n" + message;
-            sendMail(message);
             break;
         case '3':
-            let mailcontent = "Inskickat av " + name + " som vill bli kontaktad "
+            mailcontent = "Inskickat av " + name + " som vill bli kontaktad "
                               + "personligen.\n\n\n" + message;
-            sendMail(message);
             break;
         case '4':
             // TODO - Fix anonymous usage
             console.log("Anon")
             break;
     }
+    sendMail(mailcontent);
+    console.log("Mail sent");
+    res.render('index');
 });
 
 app.post('/chat', function(req, res) {
@@ -176,10 +179,8 @@ app.post('/chat', function(req, res) {
 
 
 
-var server = app.listen(8081, function () {
-    let host = server.address().address
-    let port = server.address().port
-    console.log("JMLSurvey now running at http://%s:%s", host, port)
+var server = app.listen(8082, function () {
+    console.log("JMLSurvey now running")
 });
 
 

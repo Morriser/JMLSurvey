@@ -1,6 +1,6 @@
 body {
     background-color: #a8c0b7;
-    background-image: url("public/background_image.png");
+    background-image: url("background_image.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -9,7 +9,7 @@ body {
 .maincontainer {
     border-top: 8px solid #ff642b;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
-    margin: 5% 15% 5% 15%;
+    margin: 5% 20% 5% 20%;
     padding: 5%;
     background: white;
 }
@@ -41,7 +41,7 @@ textarea {
 textarea:focus {
     outline-width: 0;
 }
-.btnSubmit {
+input[type=submit] {
     width: 100px;
     margin: 3%;
     text-align: center;

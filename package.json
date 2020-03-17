@@ -1,5 +1,6 @@
 {
   "name": "JMLSurvey",
+  "homepage": "https://f.kth.se/jml",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",

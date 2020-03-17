@@ -4,8 +4,8 @@ html
   body
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale = 1.0')
-  link(rel='stylesheet' href='css/index.css')
-  link(rel='icon' href='images/favicon.ico')
+  link(rel='stylesheet' href='index.css')
+  link(rel='icon' href='favicon.ico')
 
 .maincontainer
   .header
@@ -19,8 +19,8 @@ html
   br
   br
 
-  form(action='/' method='POST')
-    h4 Ditt namn (frivilligt):
+  form(action='' method='POST')
+    h4 Namn (frivilligt):
     input(type='text' name='name' maxlength='50')
     
     h4 Om du vill att jag kontaktar dig, hur vill du bli kontaktad?
@@ -38,7 +38,7 @@ html
     h4 Om du vill bli kontaktad via telefon eller mejl, vad har du för telefonnummer/mejladress?
     input(type='text' name="contactinfo" maxlength='50')
 
-    h4 Vad vill du prata om?
+    h4 Vad vill du berätta?
     textarea(type='textarea' name='message' maxlength='5000' required)
 
 

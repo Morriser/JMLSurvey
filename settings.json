@@ -11,7 +11,7 @@
     },
     "mail": {
         "sender": "noreply@fysiksektionen.se",
-        "reciever": "morris.eriksson@gmail.com",
+        "receiver": "socialen@fysiksektionen.se",
         "subject": "Kontakta skyddsombud",
         "config": {
             "host": "localhost",
